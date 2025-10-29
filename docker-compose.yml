@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: dbtbase
+      POSTGRES_PASSWORD: dbtbase
+      POSTGRES_DB: dbtbase
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "dbtbase"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "5432:5432"
